@@ -58,7 +58,10 @@ async function scrapPage(url) {
       restaurant.type = format($(this).find('.card__menu > .card__menu-footer > .card__menu-footer--price').text());
       restaurant.image_url = formatImage($(this).find('.card__menu > .card__menu-image > a ').attr('data-bg'));
 
-      BibRestaurants.push(restaurant);
+      if(restaurant.name!='')
+      {
+        BibRestaurants.push(restaurant);
+      }
     });
 
   }
