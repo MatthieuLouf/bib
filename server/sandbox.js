@@ -50,8 +50,12 @@ async function getBothRestaurants() {
   }
 }
 
-//saveMichelin(michelinJsonFile);
-//saveMaitre(maitreJsonFile);
+async function main() {
+  // await saveMichelin(michelinJsonFile);
+  // await saveMaitre(maitreJsonFile);
 
 
-getBothRestaurants();
+  await getBothRestaurants();
+}
+
+main()
