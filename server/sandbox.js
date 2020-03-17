@@ -1,40 +1,56 @@
-/* eslint-disable no-console, no-process-exit */
+h/* eslint-disable no-console, no-process-exit */
 const michelin = require('./michelin');
 const maitre = require('./maitre');
+const bib = require('./bib');
 const fs = require('fs');
 
-function saveDocument(document,file)
-{
+const maitreJsonFile = "maitre.json"
+const michelinJsonFile = "michelin.json"
+
+function saveDocument(document, file) {
   fs.writeFile(file, document, function (err) {
     if (err) {
       console.log("An error occured while writing JSON Object to File.");
       return console.log(err);
     }
-    return console.log("JSON "+ file+" has been saved.");
+    return console.log("JSON " + file + " has been saved.");
   });
 }
 
-async function saveMichelin() {
+async function saveMichelin(jsonFile) {
   try {
-    const restaurants = await michelin.get();
+    let restaurants = await michelin.get();
     var jsonContent = JSON.stringify(restaurants);
-    saveDocument(jsonContent,"michelin.json")
+    saveDocument(jsonContent, jsonFile)
 
   } catch (e) {
     console.error(e);
   }
 }
 
-async function saveMaitre() {
+async function saveMaitre(jsonFile) {
   try {
-    const restaurants = await maitre.get();
+    let restaurants = await maitre.get();
     var jsonContent = JSON.stringify(restaurants);
-    saveDocument(jsonContent,"maitre.json")
+    saveDocument(jsonContent, jsonFile)
 
   } catch (e) {
     console.error(e);
   }
 }
 
-saveMichelin();
-saveMaitre();
+async function getBothRestaurants() {
+  try {
+    const restaurants = bib.get(michelinJsonFile,maitreJsonFile);
+
+
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+//saveMichelin(michelinJsonFile);
+saveMaitre(maitreJsonFile);
+ 
+
+// getBothRestaurants();
