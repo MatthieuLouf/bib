@@ -1,4 +1,4 @@
-h/* eslint-disable no-console, no-process-exit */
+/* eslint-disable no-console, no-process-exit */
 const michelin = require('./michelin');
 const maitre = require('./maitre');
 const bib = require('./bib');
@@ -41,8 +41,9 @@ async function saveMaitre(jsonFile) {
 
 async function getBothRestaurants() {
   try {
-    const restaurants = bib.get(michelinJsonFile,maitreJsonFile);
+    const restaurants = await bib.get(michelinJsonFile, maitreJsonFile);
 
+    console.log(restaurants);
 
   } catch (e) {
     console.error(e);
@@ -50,7 +51,7 @@ async function getBothRestaurants() {
 }
 
 //saveMichelin(michelinJsonFile);
-saveMaitre(maitreJsonFile);
- 
+//saveMaitre(maitreJsonFile);
 
-// getBothRestaurants();
+
+getBothRestaurants();
