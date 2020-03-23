@@ -1,0 +1,32 @@
+.paper{
+    width: 80%;
+    margin-top: 2em;
+}
+
+.title{
+    font-size: 1.5em;
+    color: white !important;
+    background-color: teal;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.img{
+    height: 75px;
+    width: 100px;
+}
+
+.restaurant-name{
+    color: white !important;
+    text-align: center !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 1em !important;
+}
+
+.restaurant-name div{
+    width: fit-content!important;
+    background-color: teal;
+    padding: 0.5em;
+}
