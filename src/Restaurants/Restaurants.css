@@ -28,5 +28,5 @@
 .restaurant-name div{
     width: fit-content!important;
     background-color: teal;
-    padding: 0.5em;
+    padding: 0.2em 0.5em 0.2em 0.5em;
 }
