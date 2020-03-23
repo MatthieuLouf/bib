@@ -1,13 +1,26 @@
 const fs = require('fs');
 
-function getJavaList(jsonFile) {
+/**
+ * function that return the python list from a json document located on the root folder
+ * @param {String} jsonFile : a file name
+ */
+function getPythonList(jsonFile) {
   return JSON.parse(fs.readFileSync(jsonFile).toString());
 }
 
+/**
+ * Function that format strings with the aim to compare them on the same criterias
+ * @param {String} text 
+ */
 function compareFormat(text) {
   return text.toLowerCase().replace(/[^a-zA-Z ]/g, "")
 }
 
+/**
+ * Create a new Restaurant object, from the two michelin and maitre sources
+ * @param {Object} michelinRestaurant 
+ * @param {Object} maitreRestaurant 
+ */
 function newRestaurant(michelinRestaurant, maitreRestaurant) {
   return {
     "name" : michelinRestaurant.name,
@@ -22,6 +35,11 @@ function newRestaurant(michelinRestaurant, maitreRestaurant) {
   }
 }
 
+/**
+ * Function that get the restaurants found in the two lists, and return a merged objects of them
+ * @param {Array} michelinRestaurants 
+ * @param {Array} maitreRestaurants 
+ */
 function getRestaurantsInBothLists(michelinRestaurants, maitreRestaurants) {
   restaurants = [];
 
@@ -46,8 +64,8 @@ function getRestaurantsInBothLists(michelinRestaurants, maitreRestaurants) {
 module.exports.get = async (michelinJsonFile, maitreJsonFile) => {
   restaurants = [];
 
-  maitreRestaurants = getJavaList(maitreJsonFile);
-  michelinRestaurants = getJavaList(michelinJsonFile);
+  maitreRestaurants = getPythonList(maitreJsonFile);
+  michelinRestaurants = getPythonList(michelinJsonFile);
 
   return getRestaurantsInBothLists(michelinRestaurants, maitreRestaurants);;
 };

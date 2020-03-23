@@ -7,6 +7,11 @@ const fs = require('fs');
 const maitreJsonFile = "maitre.json"
 const michelinJsonFile = "michelin.json"
 
+/**
+ * Function that save an document array into a json file
+ * @param {Array} document 
+ * @param {String} file 
+ */
 function saveDocument(document, file) {
   fs.writeFile(file, document, function (err) {
     if (err) {
@@ -17,6 +22,10 @@ function saveDocument(document, file) {
   });
 }
 
+/**
+ * Function that retrieve the list of bib restaurants from michelin and save it into a json file
+ * @param {String} jsonFile 
+ */
 async function saveMichelin(jsonFile) {
   try {
     let restaurants = await michelin.get();
@@ -28,6 +37,10 @@ async function saveMichelin(jsonFile) {
   }
 }
 
+/**
+ * Function that retrieve the list of restaurants from maitre restaurateurs and save it into a json file
+ * @param {String} jsonFile 
+ */
 async function saveMaitre(jsonFile) {
   try {
     let restaurants = await maitre.get();
@@ -39,6 +52,9 @@ async function saveMaitre(jsonFile) {
   }
 }
 
+/**
+ * Functions that retrieve the merged restaurants list of two json lists
+ */
 async function getBothRestaurants() {
   try {
     const restaurants = await bib.get(michelinJsonFile, maitreJsonFile);

@@ -10,6 +10,9 @@ import './Restaurants.css';
 import Chip from '@material-ui/core/Chip';
 import {LocalFlorist,Brightness5,LocalDining,Public,ImportExport} from '@material-ui/icons';
 
+/**
+ * Arrays to handle types of restaurants display
+ */
 const types =["Cuisine du marché","Cuisine moderne","Cuisine du terroir","Cuisine traditionnelle","Cuisine régionale"];
 const icons = [<LocalFlorist/>,<ImportExport/>,<Brightness5/>,<LocalDining/>,<Public/>];
 
@@ -20,6 +23,9 @@ export default class Restaurants extends React.Component {
         this.fetching();
     }
 
+    /**
+     * async fetching function that retrieves the list of restaurants, and update the component
+     */
     fetching() {
         fetch('http://localhost:8080/restaurants', {
             method: "GET",
